@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temperature Converter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black flex items-center justify-center min-h-screen">
+  <div class="border rounded shadow p-8 w-full max-w-sm text-center">
+    <h1 class="text-2xl font-semibold mb-6">Temperature Converter</h1>
+    
+    <input type="number" id="inputTemp" class="border px-2 py-1 w-full mb-4" placeholder="Enter temperature" />
+    
+    <select id="unit" class="border px-2 py-1 w-full mb-4">
+      <option value="cToF">Celsius to Fahrenheit</option>
+      <option value="fToC">Fahrenheit to Celsius</option>
+    </select>
+    
+    <button onclick="convert()" class="border px-4 py-2 w-full mb-4">Convert</button>
+    
+    <div id="result" class="text-lg"></div>
+  </div>
+
+  <script>
+    function convert() {
+      const temp = parseFloat(document.getElementById('inputTemp').value);
+      const unit = document.getElementById('unit').value;
+      let result = '';
+      
+      if (unit === 'cToF') {
+        result = `${(temp * 9/5 + 32).toFixed(2)} °F`;
+      } else {
+        result = `${((temp - 32) * 5/9).toFixed(2)} °C`;
+      }
+
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+</body>
+</html>
